@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f747576e0cb341f4903918741bea4c11, type: 3}
   m_Name: WhiteBishop
   m_EditorClassIdentifier: 
-  sprite: {fileID: -687854403, guid: 2d2024580bc82e54ea37a85214d8de29, type: 3}
+  sprite: {fileID: -806042769, guid: 2d2024580bc82e54ea37a85214d8de29, type: 3}
   isWhite: 1

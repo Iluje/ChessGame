@@ -1,8 +1,11 @@
+using System;
+using Script.Pieces;
 using UnityEngine;
+using Utils;
 
-namespace Script.ScriptGame
+namespace Script.Game
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : MonoBehaviourSingleton<GameManager>
     {
         [SerializeField] private Piece WhitePawn;
         [SerializeField] private Piece WhiteKing;
@@ -20,10 +23,13 @@ namespace Script.ScriptGame
     
         [SerializeField] private GameObject PiecePrefab;
         [SerializeField] private Transform pieceParent;
-    
+        [SerializeField] private GameObject TranparentPiecePrefab;
+
+        public Piece[,] Pieces;
+        
         private void Start()
         {
-            Piece[,] piece =
+            Pieces = new Piece[,]
             {
                 { BlackRook, BlackKnight, BlackBishop, BlackKing, BlackQueen, BlackBishop, BlackKnight, BlackRook },
                 { BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn},
@@ -35,20 +41,21 @@ namespace Script.ScriptGame
                 { WhiteRook, WhiteKnight, WhiteBishop, WhiteKing, WhiteQueen, WhiteBishop, WhiteKnight, WhiteRook },
             };
 
-            for (int i = 0; i < piece.GetLength(0); i++)
+            for (int x = 0; x < Pieces.GetLength(0); x++)
             {
-                for (int j = 0; j < piece.GetLength(1); j++)
+                for (int y = 0; y < Pieces.GetLength(1); y++)
                 {
-                    Debug.Log(piece[i, j].name);
-                    
-                    GameObject instantiate = Instantiate(PiecePrefab, pieceParent);
-                    instantiate.GetComponent<PieceDisplay>();
+                    if (Pieces[x, y] != null)
+                    {
+                        GameObject newPiece = Instantiate(PiecePrefab, pieceParent);
+                        newPiece.GetComponent<PieceHandler>().Setup(Pieces[x, y], new Vector2Int(x, y));
+                    }
+                    else
+                    {
+                        Instantiate(TranparentPiecePrefab, pieceParent);
+                    }
                 }
             }
-            
-            // GameObject instantiate = Instantiate(PiecePrefab, PieceParent);
-            // instantiate.GetComponent<PieceDisplay>().Setup();
-
         }
     }
 }

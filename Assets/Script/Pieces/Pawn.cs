@@ -1,9 +1,9 @@
 using UnityEngine;
 
-namespace Script
+namespace Script.Pieces
 {
-    [CreateAssetMenu(fileName = "Bishop", menuName = "Piece/Bishop", order = 1)]  
-    public class Bishop : Piece
+    [CreateAssetMenu(fileName = "Pawn", menuName = "Piece/Pawn", order = 1)] 
+    public class Pawn : Piece
     {
         public override Vector2Int availableMovement()
         {

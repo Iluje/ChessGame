@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Script
+namespace Script.Pieces
 {
     [CreateAssetMenu(fileName = "Queen", menuName = "Piece/Queen", order = 1)] 
     public class Queen : Piece
