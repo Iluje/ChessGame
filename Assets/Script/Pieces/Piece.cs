@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Script.Pieces
@@ -8,8 +9,6 @@ namespace Script.Pieces
         public Sprite sprite;
         public bool isWhite;
         
-        public abstract Vector2Int availableMovement();
-        
-        
+        public abstract List<Vector2Int> availableMovement(Vector2Int position);
     }
 }

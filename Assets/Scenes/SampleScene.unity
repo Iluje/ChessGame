@@ -944,6 +944,7 @@ MonoBehaviour:
   BlackRook: {fileID: 11400000, guid: 4b363243bb084d3449e31f8a6859198f, type: 2}
   BlackKnight: {fileID: 11400000, guid: 46aa1fc85167aec43bee6c6ccdca275c, type: 2}
   BlackBishop: {fileID: 11400000, guid: 2e1e02d68ea8e954980d76f7f817147c, type: 2}
+  EmptyGameObject: {fileID: 5943296782771855838, guid: 161d589cbc6c8184699e07af7603914c, type: 3}
   PiecePrefab: {fileID: 5943296782771855838, guid: 0065e9509cfd1ad42a726af180ccfd75, type: 3}
   pieceParent: {fileID: 1802611403}
   TranparentPiecePrefab: {fileID: 5943296782771855838, guid: 52bbf448970d04641a6d3412ec650f6d, type: 3}

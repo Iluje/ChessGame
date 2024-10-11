@@ -1,13 +1,17 @@
 using System;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using Script.Pieces;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Script.Game
 {
     public class PieceHandler : MonoBehaviour, IPointerClickHandler
     {
+        
         private bool CanMove;
         private bool CanEat;
         
@@ -15,6 +19,7 @@ namespace Script.Game
         private Image _image;
         private Piece _piece;
 
+        private Vector2Int _curentVector2Int;
         private void Awake()
         {
             _image = GetComponent<Image>();
@@ -27,26 +32,27 @@ namespace Script.Game
             _image.sprite = piece.sprite;
         }
 
-        public void OnPointerClick(PointerEventData eventData)
+        public void  OnPointerClick(PointerEventData eventData)
         {
-            bool _haveCurentPostion = false;
-            Vector2Int CurentPosition = _position;
-            Vector2Int NewPosition = _position;
+            GameManager.Instance.ResetMatrix();
+            GameManager.Instance.DiplayMatrix();
             
-            if (_haveCurentPostion == false)
-            {
-                Debug.Log(CurentPosition + _piece.name); 
-                _haveCurentPostion = true;
+            foreach (Vector2Int vector2Int in _piece.availableMovement(_position))
+            { 
+                Debug.Log(vector2Int);
+                
+                _curentVector2Int = vector2Int;
+                
+               Image image = GameManager.Instance.SelectGameobject[_curentVector2Int.x, _curentVector2Int.y].GetComponent<Image>();
+               image.color = new Color(image.color.r, image.color.g, image.color.b, 0.4f);
+               
+               Debug.Log(_curentVector2Int);
             }
-            else
-            {
-                CurentPosition = NewPosition;
-                _position = NewPosition;
-            }
+            // GameManager.Instance.Pieces[_position.x, _position.y] = null;
+            // GameManager.Instance.Pieces[_position.x + 1, _position.y] = _piece;
             
-            
-            
-            
+            // GameManager.Instance.ResetMatrix();
+            // GameManager.Instance.DiplayMatrix();
         }
     }
 }
