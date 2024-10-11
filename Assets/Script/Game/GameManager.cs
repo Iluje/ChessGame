@@ -1,5 +1,6 @@
 using System;
 using Script.Pieces;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -32,7 +33,7 @@ namespace Script.Game
         private PieceHandler _pieceHandler;
 
         public Piece[,] Pieces;
-        public GameObject[,] SelectGameobject;
+        public GameObject[,] SelectedGameobject;
 
         private void Start()
         {
@@ -56,7 +57,7 @@ namespace Script.Game
         {
             // je créer un gameObject qui ferra la même chose que la création du tableau.
             
-            SelectGameobject = new GameObject[8, 8];
+            SelectedGameobject = new GameObject[8, 8];
             
             for (int x = 0; x < Pieces.GetLength(0); x++)
             {
@@ -77,8 +78,18 @@ namespace Script.Game
                         Debug.Log("instanciated piece vide");
                     }
                     
-                    SelectGameobject[x, y] = instantiate;
+                    SelectedGameobject[x, y] = instantiate;
                 }
+            }
+            foreach (GameObject SelectedObject in SelectedGameobject)
+            {
+                gameObject.GetComponent<BoxCollider2D>();
+
+                BoxCollider2D collider = SelectedObject.GetComponent<BoxCollider2D>();
+                
+                Debug.Log(gameObject.name + collider);
+                
+                Debug.Log("add component");
             }
         }
 

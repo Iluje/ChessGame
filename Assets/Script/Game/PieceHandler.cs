@@ -39,18 +39,18 @@ namespace Script.Game
             
             foreach (Vector2Int vector2Int in _piece.availableMovement(_position))
             { 
-                Debug.Log(vector2Int);
-                
                 _curentVector2Int = vector2Int;
                 
-               Image image = GameManager.Instance.SelectGameobject[_curentVector2Int.x, _curentVector2Int.y].GetComponent<Image>();
+               Image image = GameManager.Instance.SelectedGameobject[_curentVector2Int.x, _curentVector2Int.y].GetComponent<Image>();
                image.color = new Color(image.color.r, image.color.g, image.color.b, 0.4f);
                
                Debug.Log(_curentVector2Int);
             }
+            
+            
             // GameManager.Instance.Pieces[_position.x, _position.y] = null;
             // GameManager.Instance.Pieces[_position.x + 1, _position.y] = _piece;
-            
+
             // GameManager.Instance.ResetMatrix();
             // GameManager.Instance.DiplayMatrix();
         }

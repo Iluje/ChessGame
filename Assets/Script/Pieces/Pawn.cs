@@ -24,7 +24,6 @@ namespace Script.Pieces
                 moves.Add(new Vector2Int(2, 0) + position);
             }
             
-            
             return moves;
         }
     }
