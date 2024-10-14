@@ -8,7 +8,9 @@ namespace Script.Pieces
     {
         public override List<Vector2Int> availableMovement(Vector2Int position)
         {
-            throw new System.NotImplementedException();
+            List<Vector2Int> moves = new List<Vector2Int>();
+            
+            return moves;
         }
     }
 }

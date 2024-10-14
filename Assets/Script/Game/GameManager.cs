@@ -28,12 +28,11 @@ namespace Script.Game
         [SerializeField] private GameObject EmptyGameObject;
         [SerializeField] private GameObject PiecePrefab;
         [SerializeField] private Transform pieceParent;
-        [SerializeField] private GameObject TranparentPiecePrefab;
         
         private PieceHandler _pieceHandler;
 
         public Piece[,] Pieces;
-        public GameObject[,] SelectedGameobject;
+        public GameObject[,] GameObjectDisplay;
 
         private void Start()
         {
@@ -57,7 +56,7 @@ namespace Script.Game
         {
             // je créer un gameObject qui ferra la même chose que la création du tableau.
             
-            SelectedGameobject = new GameObject[8, 8];
+            GameObjectDisplay = new GameObject[8, 8];
             
             for (int x = 0; x < Pieces.GetLength(0); x++)
             {
@@ -70,26 +69,20 @@ namespace Script.Game
                     {
                         instantiate = Instantiate(PiecePrefab, pieceParent);
                         instantiate.GetComponent<PieceHandler>().Setup(Pieces[x, y], new Vector2Int(x, y));
-                        Debug.Log("instanciated piece");
                     }
                     else
                     {
                         instantiate = Instantiate(EmptyGameObject, pieceParent);
-                        Debug.Log("instanciated piece vide");
+                        instantiate.GetComponent<PieceHandler>().Setup(new Vector2Int(x, y));
                     }
                     
-                    SelectedGameobject[x, y] = instantiate;
+                    GameObjectDisplay[x, y] = instantiate;
                 }
             }
-            foreach (GameObject SelectedObject in SelectedGameobject)
+            foreach (GameObject SelectedObject in GameObjectDisplay)
             {
                 gameObject.GetComponent<BoxCollider2D>();
-
                 BoxCollider2D collider = SelectedObject.GetComponent<BoxCollider2D>();
-                
-                Debug.Log(gameObject.name + collider);
-                
-                Debug.Log("add component");
             }
         }
 
