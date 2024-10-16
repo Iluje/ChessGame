@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using Script.Game;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Script.Pieces
 {
@@ -11,8 +9,7 @@ namespace Script.Pieces
         public override List<Vector2Int> availableMovement(Vector2Int position)
         {
             List<Vector2Int> moves = new List<Vector2Int>();
-
-            //GameManager.Instance.Pieces
+            
             if (isWhite)
             {
                 moves.Add(new Vector2Int(-1, 0) + position);

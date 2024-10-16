@@ -1,6 +1,7 @@
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using Script.Pieces;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,13 +12,18 @@ namespace Script.Game
     public class PieceHandler : MonoBehaviourSingleton<PieceHandler>, IPointerClickHandler
     {
 
+        private TakeCoordonateEmpty _takeCoordonateEmpty;
+        
         private bool _isSelected;
-        private Vector2Int _positionMovement;
+        private Vector2Int _curentCoordonate;
         
         private Vector2Int _position;
         private Image _image;
-        private Piece _piece;
+        public Piece _piece;
+        
+        List<Vector2Int> moves = new List<Vector2Int>();
 
+        public Vector2Int CurentPosition;
         private void Awake()
         {
             _image = GetComponent<Image>();
@@ -34,51 +40,101 @@ namespace Script.Game
         {
             _position = position;
         }
-        
+
         public void  OnPointerClick(PointerEventData eventData)
         {
-            Debug.Log(_position);
-            if (_isSelected)
+            if (GameManager.Instance.BlackTurn)
             {
-                Debug.Log("Movement de " + _positionMovement + " à " + _position);
-                GameManager.Instance.Pieces[_positionMovement.x, _positionMovement.y] = null;
-                GameManager.Instance.Pieces[_position.x, _position.y] = _piece;
-                
-                //MoveTest();
-                //GameManager.Instance.Pieces[_position.x, _position.y] = _piece;
-                //GameManager.Instance.Pieces[_position.x, _position.y] = _piece;
-
-                GameManager.Instance.ResetMatrix();
-                GameManager.Instance.DiplayMatrix();
+                if (_piece.isWhite == false)
+                {
+                      
+                    GameManager.Instance.SelectedPiece = gameObject;
+            
+                    foreach (Vector2Int vector2Int in _piece.availableMovement(_position))
+                    { 
+                        TakeCoordonateEmpty EmptySelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<TakeCoordonateEmpty>();
+                        PieceHandler PieceSelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<PieceHandler>();
+                        PieceSelect._image.color = new Color(1f, 1f, 0f, 0.4f);
+                        Image _image = EmptySelect.GetComponent<Image>();
+                        _image.color = new Color(1f, 1f, 0f, 0.4f);
+                        EmptySelect.CanClick = true;
+                    }
+                    Debug.Log(moves.Count);
+                }
             }
             else
             {
-                GameManager.Instance.ResetMatrix();
-                GameManager.Instance.DiplayMatrix();
-
-                //_curentPosition = _position;
-                foreach (Vector2Int vector2Int in _piece.availableMovement(_position))
-                { 
-                    PieceHandler selectedPieceHandler = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<PieceHandler>();
-                    selectedPieceHandler.Select(_position);
+                if (_piece.isWhite)
+                {
+                    GameManager.Instance.SelectedPiece = gameObject;
+            
+                    foreach (Vector2Int vector2Int in _piece.availableMovement(_position))
+                    { 
+                        TakeCoordonateEmpty EmptySelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<TakeCoordonateEmpty>();
+                        PieceHandler PieceSelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<PieceHandler>();
+                        PieceSelect._image.color = new Color(1f, 1f, 0f, 0.4f);
+                        Image _image = EmptySelect.GetComponent<Image>();
+                        _image.color = new Color(1f, 1f, 0f, 0.4f);
+                        EmptySelect.CanClick = true;
+                    }
+                    Debug.Log(moves.Count);
                 }
             }
-        }
-        private void Select(Vector2Int position) 
-        {
-            _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, 0.4f);
-            _positionMovement = position;
-            _isSelected = true;
+            
         }
 
-        private void Update()
+        public void MovePiece(Vector2Int newPosition)
         {
-            Debug.Log(_isSelected);
+            //Debug.Log("Movement de " + _position + " à " + newPosition);
+            GameManager.Instance.Pieces[_position.x, _position.y] = null;
+            GameManager.Instance.Pieces[newPosition.x, newPosition.y] = _piece;
+            
+            
+            
+            GameManager.Instance.ResetMatrix();
+            GameManager.Instance.DiplayMatrix();
         }
 
-       [ContextMenu("MoveTest")] public void MoveTest()
+        public void EatPiece()
         {
-            GameManager.Instance.Pieces[_position.x = 4, _position.y = 4] = _piece;
+            Debug.Log("Eat Piece");
         }
     }
+    //GameManager.Instance.ResetMatrix();
+    //GameManager.Instance.DiplayMatrix();
+            
+    // if (moves.Count != 0)
+    // {
+    //     moves.Clear();
+    //     
+    //     GameManager.Instance.ResetMatrix();
+    //     GameManager.Instance.DiplayMatrix();
+    // }
+    
+       
+    // //PieceHandler selectedPieceHandler = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<PieceHandler>();
+    // //selectedPieceHandler.Select(_position);
+    // GameManager.Instance.Pieces[_position.x, _position.y] = GameManager.Instance.SelectedPiece;
+    // //_image.color = new Color(_image.color.r, _image.color.g, _image.color.b, 0.4f);
+    
+    
+    // //PieceHandler selectedPieceHandler = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<PieceHandler>();
+    // //selectedPieceHandler.Select(_position);
+    // GameManager.Instance.Pieces[_position.x, _position.y] = GameManager.Instance.SelectedPiece;
+    // //_image.color = new Color(_image.color.r, _image.color.g, _image.color.b, 0.4f);
+    
+    // private void Select(Vector2Int position) 
+    // {
+    //     //_image.color = new Color(_image.color.r, _image.color.g, _image.color.b, 0.4f);
+    //     //_takeCoordonateEmpty = GetComponent<TakeCoordonateEmpty>();
+    //     //_positionMovement = position;
+    //     //_isSelected = true;
+    // }
+    
+    // Debug.Log("Movement de " + _positionMovement + " à " + _takeCoordonateEmpty.Coordonate);
+    // GameManager.Instance.Pieces[_positionMovement.x, _positionMovement.y] = null;
+    // GameManager.Instance.Pieces[_takeCoordonateEmpty.Coordonate.x, _takeCoordonateEmpty.Coordonate.y] = _piece;
+                
+    //GameManager.Instance.Pieces[_position.x, _position.y] = _piece;
+    //GameManager.Instance.Pieces[_position.x, _position.y] = _piece;
 }

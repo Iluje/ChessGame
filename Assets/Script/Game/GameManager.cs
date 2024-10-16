@@ -1,9 +1,6 @@
-using System;
 using Script.Pieces;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
-using UnityEngine.UI;
 using Utils;
 
 namespace Script.Game
@@ -29,6 +26,9 @@ namespace Script.Game
         [SerializeField] private GameObject PiecePrefab;
         [SerializeField] private Transform pieceParent;
         
+        public GameObject SelectedPiece;
+        [FormerlySerializedAs("WhiteTurn")] public bool BlackTurn = true;
+        
         private PieceHandler _pieceHandler;
 
         public Piece[,] Pieces;
@@ -41,7 +41,7 @@ namespace Script.Game
                 { BlackRook, BlackKnight, BlackBishop, BlackKing, BlackQueen, BlackBishop, BlackKnight, BlackRook },
                 { BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn},
                 { null, null, null, null,null, null, null, null},
-                { null, null, null, null,null, null, null, null},
+                { null, null, null, WhiteKing,null, null, null, null},
                 { null, null, null, null,null, null, null, null},
                 { null, null, null, null,null, null, null, null},
                 { WhitePawn, WhitePawn, WhitePawn, WhitePawn, WhitePawn, WhitePawn, WhitePawn, WhitePawn},
@@ -74,6 +74,7 @@ namespace Script.Game
                     {
                         instantiate = Instantiate(EmptyGameObject, pieceParent);
                         instantiate.GetComponent<PieceHandler>().Setup(new Vector2Int(x, y));
+                        instantiate.GetComponent<TakeCoordonateEmpty>().Setup(new Vector2Int(x,y));
                     }
                     
                     GameObjectDisplay[x, y] = instantiate;

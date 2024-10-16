@@ -947,6 +947,8 @@ MonoBehaviour:
   EmptyGameObject: {fileID: 5943296782771855838, guid: 161d589cbc6c8184699e07af7603914c, type: 3}
   PiecePrefab: {fileID: 5943296782771855838, guid: 0065e9509cfd1ad42a726af180ccfd75, type: 3}
   pieceParent: {fileID: 1802611403}
+  SelectedPiece: {fileID: 0}
+  BlackTurn: 0
 --- !u!4 &477017577
 Transform:
   m_ObjectHideFlags: 0
@@ -5677,8 +5679,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 477017577}
   - {fileID: 1184222122}
   - {fileID: 2071429341}
-  - {fileID: 477017577}
   - {fileID: 123090636}
   - {fileID: 1026225875}
