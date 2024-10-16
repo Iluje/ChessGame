@@ -27,7 +27,7 @@ namespace Script.Game
         [SerializeField] private Transform pieceParent;
         
         public GameObject SelectedPiece;
-        [FormerlySerializedAs("WhiteTurn")] public bool BlackTurn = true;
+        public bool BlackTurn = true;
         
         private PieceHandler _pieceHandler;
 
@@ -38,10 +38,10 @@ namespace Script.Game
         {
             Pieces = new Piece[,]
             {
-                { BlackRook, BlackKnight, BlackBishop, BlackKing, BlackQueen, BlackBishop, BlackKnight, BlackRook },
-                { BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn},
+                { null, BlackKnight, BlackBishop, BlackKing, BlackQueen, BlackBishop, BlackKnight, BlackRook },
+                { WhitePawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn},
                 { null, null, null, null,null, null, null, null},
-                { null, null, null, WhiteKing,null, null, null, null},
+                { null, null, WhiteKing, null,null, null, null, null},
                 { null, null, null, null,null, null, null, null},
                 { null, null, null, null,null, null, null, null},
                 { WhitePawn, WhitePawn, WhitePawn, WhitePawn, WhitePawn, WhitePawn, WhitePawn, WhitePawn},

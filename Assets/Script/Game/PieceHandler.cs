@@ -17,7 +17,7 @@ namespace Script.Game
         private bool _isSelected;
         private Vector2Int _curentCoordonate;
         
-        private Vector2Int _position;
+        public Vector2Int _position;
         private Image _image;
         public Piece _piece;
         
@@ -43,43 +43,56 @@ namespace Script.Game
 
         public void  OnPointerClick(PointerEventData eventData)
         {
-            if (GameManager.Instance.BlackTurn)
-            {
-                if (_piece.isWhite == false)
-                {
-                      
-                    GameManager.Instance.SelectedPiece = gameObject;
             
-                    foreach (Vector2Int vector2Int in _piece.availableMovement(_position))
-                    { 
-                        TakeCoordonateEmpty EmptySelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<TakeCoordonateEmpty>();
-                        PieceHandler PieceSelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<PieceHandler>();
-                        PieceSelect._image.color = new Color(1f, 1f, 0f, 0.4f);
-                        Image _image = EmptySelect.GetComponent<Image>();
-                        _image.color = new Color(1f, 1f, 0f, 0.4f);
-                        EmptySelect.CanClick = true;
-                    }
-                    Debug.Log(moves.Count);
-                }
-            }
-            else
-            {
-                if (_piece.isWhite)
-                {
-                    GameManager.Instance.SelectedPiece = gameObject;
+            GameManager.Instance.SelectedPiece = gameObject;
             
-                    foreach (Vector2Int vector2Int in _piece.availableMovement(_position))
-                    { 
-                        TakeCoordonateEmpty EmptySelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<TakeCoordonateEmpty>();
-                        PieceHandler PieceSelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<PieceHandler>();
-                        PieceSelect._image.color = new Color(1f, 1f, 0f, 0.4f);
-                        Image _image = EmptySelect.GetComponent<Image>();
-                        _image.color = new Color(1f, 1f, 0f, 0.4f);
-                        EmptySelect.CanClick = true;
-                    }
-                    Debug.Log(moves.Count);
-                }
+            foreach (Vector2Int vector2Int in _piece.availableMovement(_position))
+            { 
+                TakeCoordonateEmpty EmptySelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<TakeCoordonateEmpty>();
+                PieceHandler PieceSelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<PieceHandler>();
+                PieceSelect._image.color = new Color(1f, 1f, 0f, 0.4f);
+                Image _image = EmptySelect.GetComponent<Image>();
+                _image.color = new Color(1f, 1f, 0f, 0.4f);
+                EmptySelect.CanClick = true;
             }
+            
+            // if (GameManager.Instance.BlackTurn)
+            // {
+            //     if (_piece.isWhite == false)
+            //     {
+            //           
+            //         GameManager.Instance.SelectedPiece = gameObject;
+            //
+            //         foreach (Vector2Int vector2Int in _piece.availableMovement(_position))
+            //         { 
+            //             TakeCoordonateEmpty EmptySelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<TakeCoordonateEmpty>();
+            //             PieceHandler PieceSelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<PieceHandler>();
+            //             PieceSelect._image.color = new Color(1f, 1f, 0f, 0.4f);
+            //             Image _image = EmptySelect.GetComponent<Image>();
+            //             _image.color = new Color(1f, 1f, 0f, 0.4f);
+            //             EmptySelect.CanClick = true;
+            //         }
+            //         Debug.Log(moves.Count);
+            //     }
+            // }
+            // else
+            // {
+            //     if (_piece.isWhite)
+            //     {
+            //         GameManager.Instance.SelectedPiece = gameObject;
+            //
+            //         foreach (Vector2Int vector2Int in _piece.availableMovement(_position))
+            //         { 
+            //             TakeCoordonateEmpty EmptySelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<TakeCoordonateEmpty>();
+            //             PieceHandler PieceSelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<PieceHandler>();
+            //             PieceSelect._image.color = new Color(1f, 1f, 0f, 0.4f);
+            //             Image _image = EmptySelect.GetComponent<Image>();
+            //             _image.color = new Color(1f, 1f, 0f, 0.4f);
+            //             EmptySelect.CanClick = true;
+            //         }
+            //         Debug.Log(moves.Count);
+            //     }
+            // }
             
         }
 
