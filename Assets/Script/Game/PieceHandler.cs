@@ -24,6 +24,9 @@ namespace Script.Game
         List<Vector2Int> moves = new List<Vector2Int>();
 
         public Vector2Int CurentPosition;
+
+        [SerializeField] private bool HavePiece;
+       [SerializeField] private bool _isPosibleMovement;
         private void Awake()
         {
             _image = GetComponent<Image>();
@@ -43,7 +46,8 @@ namespace Script.Game
 
         public void  OnPointerClick(PointerEventData eventData)
         {
-            
+
+                
             GameManager.Instance.SelectedPiece = gameObject;
             
             foreach (Vector2Int vector2Int in _piece.availableMovement(_position))
@@ -51,16 +55,18 @@ namespace Script.Game
                 TakeCoordonateEmpty EmptySelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<TakeCoordonateEmpty>();
                 PieceHandler PieceSelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<PieceHandler>();
                 PieceSelect._image.color = new Color(1f, 1f, 0f, 0.4f);
-                Image _image = EmptySelect.GetComponent<Image>();
-                _image.color = new Color(1f, 1f, 0f, 0.4f);
                 EmptySelect.CanClick = true;
             }
+            Debug.Log(moves.Count);
+            
+            
+            
+            
             
             // if (GameManager.Instance.BlackTurn)
             // {
             //     if (_piece.isWhite == false)
             //     {
-            //           
             //         GameManager.Instance.SelectedPiece = gameObject;
             //
             //         foreach (Vector2Int vector2Int in _piece.availableMovement(_position))
@@ -68,8 +74,6 @@ namespace Script.Game
             //             TakeCoordonateEmpty EmptySelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<TakeCoordonateEmpty>();
             //             PieceHandler PieceSelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<PieceHandler>();
             //             PieceSelect._image.color = new Color(1f, 1f, 0f, 0.4f);
-            //             Image _image = EmptySelect.GetComponent<Image>();
-            //             _image.color = new Color(1f, 1f, 0f, 0.4f);
             //             EmptySelect.CanClick = true;
             //         }
             //         Debug.Log(moves.Count);
@@ -86,14 +90,11 @@ namespace Script.Game
             //             TakeCoordonateEmpty EmptySelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<TakeCoordonateEmpty>();
             //             PieceHandler PieceSelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<PieceHandler>();
             //             PieceSelect._image.color = new Color(1f, 1f, 0f, 0.4f);
-            //             Image _image = EmptySelect.GetComponent<Image>();
-            //             _image.color = new Color(1f, 1f, 0f, 0.4f);
             //             EmptySelect.CanClick = true;
             //         }
             //         Debug.Log(moves.Count);
             //     }
             // }
-            
         }
 
         public void MovePiece(Vector2Int newPosition)

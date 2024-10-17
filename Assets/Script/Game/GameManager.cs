@@ -38,10 +38,10 @@ namespace Script.Game
         {
             Pieces = new Piece[,]
             {
-                { null, BlackKnight, BlackBishop, BlackKing, BlackQueen, BlackBishop, BlackKnight, BlackRook },
-                { WhitePawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn},
+                { BlackRook, BlackKnight, BlackBishop, BlackKing, BlackQueen, BlackBishop, BlackKnight, BlackRook },
+                { BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn},
                 { null, null, null, null,null, null, null, null},
-                { null, null, WhiteKing, null,null, null, null, null},
+                { null, null, null, BlackKnight, null, null, null, null},
                 { null, null, null, null,null, null, null, null},
                 { null, null, null, null,null, null, null, null},
                 { WhitePawn, WhitePawn, WhitePawn, WhitePawn, WhitePawn, WhitePawn, WhitePawn, WhitePawn},

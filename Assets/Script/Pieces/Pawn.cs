@@ -15,13 +15,6 @@ namespace Script.Pieces
             {
                 moves.Add(new Vector2Int(-1, 0) + position);
                 moves.Add(new Vector2Int(-2, 0) + position);
-                
-                
-                if (GameManager.Instance.Pieces == null)
-                {
-                    
-                }
-               
             }
             else
             {

@@ -19,8 +19,6 @@ namespace Script.Game
             {
                 GameManager.Instance.SelectedPiece.GetComponent<PieceHandler>().MovePiece(_position);
                 GameManager.Instance.BlackTurn =! GameManager.Instance.BlackTurn;
-                
-                
             }
         }
     }
