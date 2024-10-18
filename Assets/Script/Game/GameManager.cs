@@ -29,7 +29,6 @@ namespace Script.Game
         public Piece SelectedPiece;
         public Vector2Int OldPosition;
         
-        //public GameObject SelectedPiece;
         public bool BlackTurn = true;
         
         private PieceHandler _pieceHandler;

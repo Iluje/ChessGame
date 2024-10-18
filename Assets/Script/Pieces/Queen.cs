@@ -16,7 +16,7 @@ namespace Script.Pieces
             for (int i = position.x + 1; i <= 7; i++)
             {
                 Debug.Log(i + " , " + position.y);
-                if (GameManager.Instance.Pieces[i, position.y] == null)
+                if (GameManager.Instance.Pieces[i, position.y] == null || GameManager.Instance.Pieces[i, position.y] != null)
                 {
                     moves.Add(new Vector2Int(i, position.y));
                     continue;
@@ -29,7 +29,7 @@ namespace Script.Pieces
             for (int i = position.x - 1; i >= 0; i--)
             {
                 Debug.Log(i + " , " + position.y);
-                if (GameManager.Instance.Pieces[i, position.y] == null)
+                if (GameManager.Instance.Pieces[i, position.y] == null || GameManager.Instance.Pieces[i, position.y] != null)
                 {
                     moves.Add(new Vector2Int(i, position.y));
                     continue;
@@ -42,7 +42,7 @@ namespace Script.Pieces
             for (int i = position.y + 1; i <= 7; i++)
             {
                 Debug.Log(i + " , " + position.y);
-                if (GameManager.Instance.Pieces[position.x, i] == null)
+                if (GameManager.Instance.Pieces[position.x, i] == null || GameManager.Instance.Pieces[position.x, i] != null)
                 {
                     moves.Add(new Vector2Int(position.x, i));
                     continue;
@@ -55,7 +55,7 @@ namespace Script.Pieces
             for (int i = position.y - 1; i >= 0; i--)
             {
                 Debug.Log(i + " , " + position.y);
-                if (GameManager.Instance.Pieces[position.x, i] == null)
+                if (GameManager.Instance.Pieces[position.x, i] == null || GameManager.Instance.Pieces[position.x, i] != null)
                 {
                     moves.Add(new Vector2Int(position.x, i));
                     continue;
@@ -70,7 +70,7 @@ namespace Script.Pieces
             
             for (int i = 1; position.x + i <= 7 && position.y + i <= 7; i++)
             {
-                if (GameManager.Instance.Pieces[position.x + i, position.y + i] == null)
+                if (GameManager.Instance.Pieces[position.x + i, position.y + i] == null || GameManager.Instance.Pieces[position.x + i, position.y + i] != null)
                 {
                     moves.Add(new Vector2Int(position.x + i, position.y + i));
                     continue;
@@ -83,7 +83,7 @@ namespace Script.Pieces
             
             for (int i = 1; position.x + i <= 7 && position.y - i >= 0; i++)
             {
-                if (GameManager.Instance.Pieces[position.x + i, position.y - i] == null)
+                if (GameManager.Instance.Pieces[position.x + i, position.y - i] == null || GameManager.Instance.Pieces[position.x + i, position.y - i] != null)
                 {
                     moves.Add(new Vector2Int(position.x + i, position.y - i));
                     continue;
@@ -96,7 +96,7 @@ namespace Script.Pieces
             
             for (int i = 1; position.x - i >= 0 && position.y + i <= 7; i++)
             {
-                if (GameManager.Instance.Pieces[position.x - i, position.y + i] == null)
+                if (GameManager.Instance.Pieces[position.x - i, position.y + i] == null || GameManager.Instance.Pieces[position.x - i, position.y + i] != null)
                 {
                     moves.Add(new Vector2Int(position.x - i, position.y + i));
                     continue;
@@ -109,7 +109,7 @@ namespace Script.Pieces
             
             for (int i = 1; position.x - i >= 0 && position.y - i >= 0; i++)
             {
-                if (GameManager.Instance.Pieces[position.x - i, position.y - i] == null)
+                if (GameManager.Instance.Pieces[position.x - i, position.y - i] == null || GameManager.Instance.Pieces[position.x - i, position.y - i] != null)
                 {
                     moves.Add(new Vector2Int(position.x - i, position.y - i));
                     continue;

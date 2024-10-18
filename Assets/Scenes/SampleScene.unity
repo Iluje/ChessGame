@@ -948,6 +948,7 @@ MonoBehaviour:
   PiecePrefab: {fileID: 5943296782771855838, guid: 0065e9509cfd1ad42a726af180ccfd75, type: 3}
   pieceParent: {fileID: 1802611403}
   SelectedPiece: {fileID: 0}
+  OldPosition: {x: 0, y: 0}
   BlackTurn: 0
 --- !u!4 &477017577
 Transform:

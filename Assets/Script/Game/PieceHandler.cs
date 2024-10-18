@@ -86,102 +86,16 @@ namespace Script.Game
                     availableMovement.Add(vector2Int);
 
                     PieceHandler MovementPosible = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<PieceHandler>();
-                    MovementPosible._image.color = Color.cyan;
+                    MovementPosible._image.color = new Color(0,1,0,0.2f);
 
                     MovementPosible._isSelected = true;
                     MovementPosible.OldPosition = _position;
                     
                     GameManager.Instance.SelectedPiece = _piece;
                 }
-
-                // foreach (Vector2Int VARIABLE in availableMovement)
-                // {
-                //     Debug.Log(VARIABLE);
-                // }
-
-                
             }
-            
-            
-            
-            
-            
-            
         }
-        
-
-        // public void MovePiece(Vector2Int newPosition)
-        // {
-        //     //Debug.Log("Movement de " + _position + " à " + newPosition);
-        //     GameManager.Instance.Pieces[_position.x, _position.y] = null;
-        //     GameManager.Instance.Pieces[newPosition.x, newPosition.y] = _piece;
-        //     
-        //     GameManager.Instance.ResetMatrix();
-        //     GameManager.Instance.DiplayMatrix();
-        // }
+      
     }
 }
 
-
-
-
-
-
-
-
-
-// GameManager.Instance.SelectedPiece = gameObject;
-//
-// GameManager.Instance.SelectedPiece = gameObject;
-//
-// foreach (Vector2Int vector2Int in _piece.availableMovement(_position))
-// { 
-//     //TakeCoordonateEmpty EmptySelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<TakeCoordonateEmpty>();
-//     
-//     
-//     PieceHandler PieceSelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<PieceHandler>();
-//     PieceSelect._image.color = new Color(1f, 1f, 0f, 0.4f);
-//     
-//     
-//     //EmptySelect.CanClick = true;
-// }
-// Debug.Log(moves.Count);
-
-
-
-
-
-
-
-// if (GameManager.Instance.BlackTurn)
-// {
-//     if (_piece.isWhite == false)
-//     {
-//         GameManager.Instance.SelectedPiece = gameObject;
-//
-//         foreach (Vector2Int vector2Int in _piece.availableMovement(_position))
-//         { 
-//             //TakeCoordonateEmpty EmptySelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<TakeCoordonateEmpty>();
-//             PieceHandler PieceSelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<PieceHandler>();
-//             PieceSelect._image.color = new Color(1f, 1f, 0f, 0.4f);
-//             //EmptySelect.CanClick = true;
-//         }
-//         Debug.Log(moves.Count);
-//     }
-// }
-// else
-// {
-//     if (_piece.isWhite)
-//     {
-//         GameManager.Instance.SelectedPiece = gameObject;
-//
-//         foreach (Vector2Int vector2Int in _piece.availableMovement(_position))
-//         { 
-//             //TakeCoordonateEmpty EmptySelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<TakeCoordonateEmpty>();
-//             PieceHandler PieceSelect = GameManager.Instance.GameObjectDisplay[vector2Int.x, vector2Int.y].GetComponent<PieceHandler>();
-//             PieceSelect._image.color = new Color(1f, 1f, 0f, 0.4f);
-//             //EmptySelect.CanClick = true;
-//         }
-//         Debug.Log(moves.Count);
-//     }
-// }

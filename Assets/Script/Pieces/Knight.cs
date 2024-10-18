@@ -32,7 +32,7 @@ namespace Script.Pieces
                     Debug.Log("n'est pas dans le tableau");
                     continue;
                 }
-                if (GameManager.Instance.Pieces[testMovement.x, testMovement.y] == null)
+                if (GameManager.Instance.Pieces[testMovement.x, testMovement.y] == null || GameManager.Instance.Pieces[testMovement.x, testMovement.y] != null)
                 {
                     moves.Add(testMovement);
                 }
