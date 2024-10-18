@@ -12,15 +12,13 @@ namespace Script.Game
 {
     public class PieceHandler : MonoBehaviourSingleton<PieceHandler>, IPointerClickHandler
     {
-
-        private TakeCoordonateEmpty _takeCoordonateEmpty;
         
         [SerializeField] private bool _isSelected;
         private Piece _selectedPiece;
         
         public Vector2Int _position;
         private Image _image;
-        private Piece _piece;
+        public Piece _piece;
 
         public Vector2Int OldPosition;
         
@@ -62,8 +60,6 @@ namespace Script.Game
             
             
             Debug.Log("la nouvelle piece est "  + GameManager.Instance.SelectedPiece);
-
-            
             
             Debug.Log(_position);
             if (_isSelected)

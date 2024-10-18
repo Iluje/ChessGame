@@ -43,7 +43,7 @@ namespace Script.Game
                 { BlackRook, BlackKnight, BlackBishop, BlackKing, BlackQueen, BlackBishop, BlackKnight, BlackRook },
                 { BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn},
                 { null, null, null, null,null, null, null, null},
-                { null, null, null,BlackRook , null, null, null, null},
+                { null, null, null,null , null, null, null, null},
                 { null, null, null,null ,null, null, null, null},
                 { null, null, null, null,null, null, null, null},
                 { WhitePawn, WhitePawn, WhitePawn, WhitePawn, WhitePawn, WhitePawn, WhitePawn, WhitePawn},
@@ -76,7 +76,6 @@ namespace Script.Game
                     {
                         instantiate = Instantiate(EmptyGameObject, pieceParent);
                         instantiate.GetComponent<PieceHandler>().Setup(new Vector2Int(x, y));
-                        //instantiate.GetComponent<TakeCoordonateEmpty>().Setup(new Vector2Int(x,y));
                     }
                     
                     GameObjectDisplay[x, y] = instantiate;
@@ -88,7 +87,6 @@ namespace Script.Game
                 BoxCollider2D collider = SelectedObject.GetComponent<BoxCollider2D>();
             }
         }
-
         public void ResetMatrix()
         {
             foreach (Transform child in pieceParent)
