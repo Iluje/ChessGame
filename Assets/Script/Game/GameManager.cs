@@ -25,8 +25,11 @@ namespace Script.Game
         [SerializeField] private GameObject EmptyGameObject;
         [SerializeField] private GameObject PiecePrefab;
         [SerializeField] private Transform pieceParent;
+
+        public Piece SelectedPiece;
+        public Vector2Int OldPosition;
         
-        public GameObject SelectedPiece;
+        //public GameObject SelectedPiece;
         public bool BlackTurn = true;
         
         private PieceHandler _pieceHandler;
@@ -41,8 +44,8 @@ namespace Script.Game
                 { BlackRook, BlackKnight, BlackBishop, BlackKing, BlackQueen, BlackBishop, BlackKnight, BlackRook },
                 { BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn, BlackPawn},
                 { null, null, null, null,null, null, null, null},
-                { null, null, null, BlackKnight, null, null, null, null},
-                { null, null, null, null,null, null, null, null},
+                { null, null, null,BlackRook , null, null, null, null},
+                { null, null, null,null ,null, null, null, null},
                 { null, null, null, null,null, null, null, null},
                 { WhitePawn, WhitePawn, WhitePawn, WhitePawn, WhitePawn, WhitePawn, WhitePawn, WhitePawn},
                 { WhiteRook, WhiteKnight, WhiteBishop, WhiteKing, WhiteQueen, WhiteBishop, WhiteKnight, WhiteRook },
@@ -74,7 +77,7 @@ namespace Script.Game
                     {
                         instantiate = Instantiate(EmptyGameObject, pieceParent);
                         instantiate.GetComponent<PieceHandler>().Setup(new Vector2Int(x, y));
-                        instantiate.GetComponent<TakeCoordonateEmpty>().Setup(new Vector2Int(x,y));
+                        //instantiate.GetComponent<TakeCoordonateEmpty>().Setup(new Vector2Int(x,y));
                     }
                     
                     GameObjectDisplay[x, y] = instantiate;
@@ -95,4 +98,8 @@ namespace Script.Game
             }
         }
     }
+    
+    
+    
+    
 }

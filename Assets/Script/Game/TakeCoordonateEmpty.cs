@@ -17,7 +17,7 @@ namespace Script.Game
         {
             if (CanClick)
             {
-                GameManager.Instance.SelectedPiece.GetComponent<PieceHandler>().MovePiece(_position);
+                //GameManager.Instance.SelectedPiece.GetComponent<PieceHandler>().MovePiece(_position);
                 GameManager.Instance.BlackTurn =! GameManager.Instance.BlackTurn;
             }
         }

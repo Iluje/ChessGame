@@ -1,66 +1,48 @@
 using System.Collections.Generic;
 using Script.Game;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Script.Pieces
 {
-    [CreateAssetMenu(fileName = "King", menuName = "Piece/King", order = 1)]
+    [CreateAssetMenu(fileName = "King", menuName = "Piece/King", order = 2)]
     public class King : Piece
     {
+        
+        
         public override List<Vector2Int> availableMovement(Vector2Int position)
         {
             List<Vector2Int> moves = new List<Vector2Int>();
-            List<Vector2Int> Position = new List<Vector2Int>();
-
-            for (int i = 0; i < 1; i++)
+            
+            List<Vector2Int> kingMovements = new List<Vector2Int>()
             {
-                int X = position.x + position.x;
-                int Y = position.y + position.y;
-
-                if (GameManager.Instance.Pieces[X, Y] != null)
-                {
-                    
-                }
+                new Vector2Int(1, 0), 
+                new Vector2Int(-1, 0),
+                new Vector2Int(0, 1),   
+                new Vector2Int(0, -1), 
+                new Vector2Int(1, 1),   
+                new Vector2Int(1, -1),  
+                new Vector2Int(-1, 1),  
+                new Vector2Int(-1, -1)   
+            };
+            
+            foreach (Vector2Int movement in kingMovements)
+            {
+                Vector2Int testMovement = position + movement;
+                Debug.Log(testMovement);
                 
-                moves.Add(new Vector2Int(-1, 0) + position);
-                moves.Add(new Vector2Int(1, 0) + position);
-                moves.Add(new Vector2Int(0, -1) + position);
-                moves.Add(new Vector2Int(0, 1) + position);
-                moves.Add(new Vector2Int(1, 1) + position);
-                moves.Add(new Vector2Int(-1, -1) + position);
-                moves.Add(new Vector2Int(1, -1) + position);
-                moves.Add(new Vector2Int(-1, 1) + position);
+                if (testMovement.x > 7 || testMovement.x < 0 || testMovement.y > 7 || testMovement.y < 0)
+                {
+                    Debug.Log("n'est pas dans le tableau");
+                    continue;
+                }
+                if (GameManager.Instance.Pieces[testMovement.x, testMovement.y] == null)
+                {
+                    moves.Add(testMovement);
+                }
             }
-            
-            
-            
-            
-            
-            // for (int i = 0; i < 1; i++)
-            // {
-            //     int X = position.x + position.x;
-            //     int Y = position.y + position.y;
-            //     
-            //     while ((X < 0 || X >= 8 || Y < 0 || Y >= 8))
-            //     {
-            //         Vector2Int AddPosition = new Vector2Int(X, Y);
-            //         moves.Add(AddPosition);
-            //         
-            //         moves.Add(new Vector2Int(-1, 0) + position);
-            //         moves.Add(new Vector2Int(1, 0) + position);
-            //         moves.Add(new Vector2Int(0, -1) + position);
-            //         moves.Add(new Vector2Int(0, 1) + position);
-            //         moves.Add(new Vector2Int(1, 1) + position);
-            //         moves.Add(new Vector2Int(-1, -1) + position);
-            //         moves.Add(new Vector2Int(1, -1) + position);
-            //         moves.Add(new Vector2Int(-1, 1) + position);
-            //         break;
-            //     }
-            // }
-            
             return moves;
         }
-
+        
+           
     }
 }

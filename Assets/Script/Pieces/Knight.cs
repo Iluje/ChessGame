@@ -20,29 +20,23 @@ namespace Script.Pieces
                 new Vector2Int(-1, 2),
                 new Vector2Int(1, 2),
                 new Vector2Int(-1, -2),
-                new Vector2Int(1, -2),
+                new Vector2Int(1, -2)
             };
-
-            Vector2Int testMovement;
-            testMovement = position;
 
             foreach (Vector2Int movement in knightMovements)
             {
-                testMovement += movement;
-                Debug.Log(testMovement);
+                Vector2Int testMovement = position + movement;
+
                 if (testMovement.x > 7 || testMovement.x < 0 || testMovement.y > 7 || testMovement.y < 0)
                 {
-                    Debug.Log(testMovement + " is out of range ");
+                    Debug.Log("n'est pas dans le tableau");
                     continue;
                 }
                 if (GameManager.Instance.Pieces[testMovement.x, testMovement.y] == null)
                 {
-                    moves.Add(new Vector2Int(testMovement.x, testMovement.y));
+                    moves.Add(testMovement);
                 }
-
-                testMovement = position;
             }
-
             return moves;
         }
     }
